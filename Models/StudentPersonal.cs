@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DataAccessLayer.Models;
+namespace StudentSystemMvcCore.Models;
 
 public partial class StudentPersonal
 {
-
-
     public Guid Id { get; set; }
 
     public string StudentCode { get; set; } = null!;

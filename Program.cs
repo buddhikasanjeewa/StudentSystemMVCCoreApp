@@ -1,8 +1,16 @@
+using DataAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
+
+using SoftOneStudentSystemWebApi.RequestModel;
+using StudentBL;
+using StudentSystemMvcCore.DBModel;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<GitstudentContext>(option =>
+option.UseSqlServer(builder.Configuration.GetConnectionString("StuConStr")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -13,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 	app.UseHsts();
 }
 
+//builder.Services.AddScoped<IStudentService, StudentService>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -22,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=Student}/{action=Index}/{id?}");
 
 app.Run();

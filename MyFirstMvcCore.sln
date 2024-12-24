@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstMvcCore", "MyFirstMvcCore.csproj", "{DFE5A46C-AE11-48CB-8072-F9166C62800D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentSystemMvcCore", "StudentSystemMvcCore.csproj", "{DFE5A46C-AE11-48CB-8072-F9166C62800D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{736D04E6-7A37-483F-B80B-04334AFF09B2}"
 EndProject
