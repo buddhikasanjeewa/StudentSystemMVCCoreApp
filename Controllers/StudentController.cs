@@ -23,23 +23,23 @@ namespace StudentSystemMvcCore.Controllers
         }
 
         // GET: StudentController/Details/5
-        public async Task<ActionResult> Details(Guid? id,string studentcode)
+      
+        public async Task<ActionResult> Details(Guid? Id)
         {
-            if (id == null || stuContext.StudentPersonals == null)
+            if (Id == null || stuContext.StudentPersonals == null)
             {
                 return NotFound();
             }
             var student = await stuContext.StudentPersonals
-           .FirstOrDefaultAsync(m => m.Id==id && m.StudentCode==studentcode);
-            if (student== null)
+           .FirstOrDefaultAsync(m => m.Id == Id);
+            if (student == null)
             {
                 return NotFound();
             }
             return View(student);
-      
+
         }
 
-        // GET: StudentController/Create
         public ActionResult Create()
         {
 
@@ -70,13 +70,13 @@ namespace StudentSystemMvcCore.Controllers
         }
 
         // GET: StudentController/Edit/5
-        public async Task<ActionResult> Edit(Guid? id, string studentcode)
+        public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null || stuContext.StudentPersonals == null)
             {
                 return NotFound();
             }
-            var student = await stuContext.StudentPersonals.FirstOrDefaultAsync(x=>x.Id==id && x.StudentCode==studentcode);
+            var student = await stuContext.StudentPersonals.FirstOrDefaultAsync(x=>x.Id==id);
             if (student == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace StudentSystemMvcCore.Controllers
         // POST: StudentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Guid id, string studentcode,[Bind("StudentCode,FirstName,LastName,Mobile,Email,NIC,DOB")] StudentPersonal stuPersonal)
+        public async Task<ActionResult> Edit(Guid id,[Bind("StudentCode,FirstName,LastName,Mobile,Email,NIC,DOB")] StudentPersonal stuPersonal)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace StudentSystemMvcCore.Controllers
                     }
                     catch (DbUpdateConcurrencyException)
                     {
-                        if (!StudentExists(id,studentcode))
+                        if (!StudentExists(id))
                         {
                             return NotFound();
                         }
@@ -127,13 +127,13 @@ namespace StudentSystemMvcCore.Controllers
         }
 
         // GET: StudentController/Delete/5
-        public async Task<ActionResult> Delete(Guid id, string studentcode)
+        public async Task<ActionResult> Delete(Guid id)
         {
             if (stuContext.StudentPersonals == null)
             {
                 return NotFound();
             }
-            var student = await stuContext.StudentPersonals.FirstOrDefaultAsync(x => x.Id == id && x.StudentCode == studentcode);
+            var student = await stuContext.StudentPersonals.FirstOrDefaultAsync(x => x.Id == id );
             if (student == null)
             {
                 return NotFound();
@@ -144,7 +144,7 @@ namespace StudentSystemMvcCore.Controllers
         // POST: StudentController/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmedAsync(Guid id, string studentcode)
+        public async Task<ActionResult> DeleteConfirmedAsync(Guid id)
         {
             try
             {
@@ -167,9 +167,9 @@ namespace StudentSystemMvcCore.Controllers
             }
         }
 
-        private bool StudentExists(Guid id,string studentcode)
+        private bool StudentExists(Guid id)
         {
-            return (stuContext.StudentPersonals?.Any(e => e.Id == id && e.StudentCode==studentcode)).GetValueOrDefault();
+            return (stuContext.StudentPersonals?.Any(e => e.Id == id )).GetValueOrDefault();
         }
     }
 }
