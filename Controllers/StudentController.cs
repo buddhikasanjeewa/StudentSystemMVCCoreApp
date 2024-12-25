@@ -151,7 +151,7 @@ namespace StudentSystemMvcCore.Controllers
         // POST: StudentController/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmedAsync(Guid id)
+        public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
             try
             {
@@ -159,7 +159,7 @@ namespace StudentSystemMvcCore.Controllers
                 {
                     return Problem("Entity set 'EFCoreDbContext.Student' is null.");
                 }
-                var student = await stuContext.StudentPersonals.FindAsync(id);
+                var student = await stuContext.StudentPersonals.FirstOrDefaultAsync(x => x.Id == id);
                 if (student != null)
                 {
                     stuContext.StudentPersonals.Remove(student);
