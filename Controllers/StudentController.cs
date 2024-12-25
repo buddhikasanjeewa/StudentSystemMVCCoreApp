@@ -51,15 +51,11 @@ namespace StudentSystemMvcCore.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("Id,StudentCode,FirstName,LastName,Mobile,Email,Nic,Dob,Address")] StudentPersonal stuPersonalRq)
+        public async Task<ActionResult> Create([Bind("StudentCode,FirstName,LastName,Mobile,Email,Nic,Dob,Address")] StudentPersonal stuPersonalRq)
         {
             try
             {
-                if(stuPersonalRq.Id.ToString()== "00000000-0000-0000-0000-000000000000")
-                {
-                    stuPersonalRq.Id =Guid.NewGuid();
-                   
-                }
+              
                 if (ModelState.IsValid)
                 {
                     stuContext.Add(stuPersonalRq);
