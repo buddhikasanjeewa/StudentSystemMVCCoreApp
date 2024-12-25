@@ -1,9 +1,11 @@
-﻿using DataAccessLayer.Models;
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentSystemMvcCore.DBModel;
+using StudentSystemMvcCore.Models;
+
 
 namespace StudentSystemMvcCore.Controllers
 {
@@ -49,18 +51,22 @@ namespace StudentSystemMvcCore.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("StudentCode,FirstName,LastName,Mobile,Email,NIC,DOB")] StudentPersonal stuPersonal)
+        public async Task<ActionResult> Create([Bind("StudentCode,FirstName,LastName,Mobile,Email,Nic,DOB")] StudentPersonal stuPersonalRq)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    stuContext.Add(stuPersonal);
+                    stuContext.Add(stuPersonalRq);
                     await stuContext.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
+                   
                 }
-            
-                return View(stuPersonal);
+                else
+                {
+                    return View(stuPersonalRq);
+                }
+             
                
             }
             catch
