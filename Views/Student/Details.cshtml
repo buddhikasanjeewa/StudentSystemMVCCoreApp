@@ -31,7 +31,7 @@
         @Html.DisplayFor(model => model.FirstName)
     </dd>
         <dt class="col-sm-3">
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.LastName)
         </dt>
     <dd class="col-sm-3">
         @Html.DisplayFor(model => model.LastName)
@@ -51,8 +51,21 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 </dl>
-    
-   
+
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Dob)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Dob)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
      
         
  

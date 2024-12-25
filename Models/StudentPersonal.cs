@@ -34,6 +34,7 @@ public partial class StudentPersonal
     [MaxLength(50)]
     public string Email { get; set; } = null!;
     [DisplayName("Date of Birth")]
+    [DataType(DataType.Date)]
     public DateTime? Dob { get; set; }
     [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter NIC")]
     [MaxLength(20)]
